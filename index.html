@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- custom css  -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">	
+    <title>Dororo</title>
+    <link rel="icon" href="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx101347-2J2p8qJpxpfZ.jpg" type="jpg">
+    <style>
+    * {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        text-transform: capitalize;
+        font-weight: normal;
+        font-family: 'Quicksand', sans-serif;
+
+    }
+body {
+    background: #0f0f0f;
+    font-family: 'Quicksand', sans-serif;
+}
+.heading {
+    color: #728197;
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;  
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 5px 5%;
+
+}
+.container .main-video {
+    background: #1a1a1a;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.container .main-video video {
+    width: 100%;
+    border-radius: 5px;
+}
+.container .main-video  .title {
+    background: rgb(33 33 33);
+    color: rgb(255, 250, 250);
+    font-size: 23px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.container .video-list {
+    background: rgb(33 33 33);
+    border-radius: 5px;
+    height: 520px;
+    overflow-y: scroll;
+
+}
+
+.container .video-list::-webkit-scrollbar {
+    width: 7px;
+}
+.container .video-list::-webkit-scrollbar-track {
+    background: #ccc;
+    border-radius: 50px; 
+}
+.container .video-list::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 50px; 
+}
+
+
+
+.container .video-list .vid video {
+    width: 100px;
+    border-radius: 5px;
+
+}
+
+.container .video-list .vid {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0,0,0,.1);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,.1);
+    cursor: pointer;
+}
+.container .video-list .vid:hover{
+    background: rgb(39 39 39);
+}
+
+
+
+.container .video-list .vid.active{
+    background: rgb(26 35 49);
+
+}
+.container .video-list .vid.active .title{
+   color: #fff;
+}
+.container .video-list .vid .title{
+   color: hsla(0,0%,100%,.5);
+   font-size: 17px;
+}
+@media (max-width:991px){   
+    .container {
+    grid-template-columns: 1.5fr 1fr;
+    padding: 10px;
+}
+}
+@media (max-width:768px){
+    .container {
+    grid-template-columns: 1fr;
+}
+}
+#myVideo {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+button {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555555; 
+  color: white;
+}
+
+#timeline {
+    display: none; /* Hide timeline */
+}
+
+/* ------------------------------------------------hieu-ung-chuyen-dong-luot-len-luot-xuong---------------------------------------------------------------------- */
+
+.container, .video-list, .heading {
+    /* Thời gian chuyển đổi */
+    transition: all 0.5s ease-in-out;
+}
+
+.container:hover, .video-list:hover, .heading:hover {
+    /* Hiệu ứng lướt lên */
+    transform: translateY(-10px);
+}
+
+.container:active, .video-list:active, .heading:active {
+    /* Hiệu ứng lướt xuống */
+    transform: translateY(10px);
+}
+/* _____________________________________________________________________________________________________________________________ */
+
+    </style>
+</head>
+<body>
+    <h3 class="heading">Dororo</h3>
+    <div class="container">
+        <div class="main-video">
+            <div class="video">
+                <video id="myVideo"  controls muted autoplay playsinline poster="https://cdn.jwplayer.com/thumbs/tWFhB9vz-1920.jpg"  src="https://content.jwplatform.com/videos/tWFhB9vz-1920.mp4">
+                    <source src="
+                    " size="720">
+                        <source src=""
+                    size="1080">
+                </video>
+<input id="timeline" type="range" min="0" max="100" value="0">
+                <div class="title">Tập 1 - Chương Truyện về Daigo</div>
+            </div>
+        </div>
+
+    <!-- phan list video -->
+    <div  class="video-list">
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/tWFhB9vz-1920.mp4" poster="https://s199.imacdn.com/vg/2019/01/08/ebcb2add29f93d79_276d8ab1769fd332_1994515469253275118684.jpg"></video>
+            <h3 class="title">Tập 1 - Chương Truyện về Daigo</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/XW8u4Byp-1920.mp4" poster="https://s199.imacdn.com/vg/2019/01/15/fc40cb01f743faac_a84ea69e2a7dc0d5_24511154754743929674.jpg"></video>
+            <h3 class="title">Tập 2 - Câu chuyện của Bandai</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/yEsKafJw-1920.mp4" poster="https://s199.imacdn.com/vg/2019/01/22/7e9e14467e15c540_c8b953969ce9abf9_2550115481235778118684.jpg"></video>
+            <h3 class="title">Tập 3 - Câu chuyện của Jukai</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/hNLQ8MSH-1920.mp4" poster="https://s199.imacdn.com/vg/2019/01/29/928f1d4aa1a0af8f_4bba87b74d4a7dc1_2422215487002564118684.jpg"></video>
+            <h3 class="title">Tập 4 - Câu chuyện của thanh kiếm bị nguyền rủa</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/eAeMIlft-1920.mp4" poster="https://s199.imacdn.com/vg/2019/02/05/af7048a910a594c1_ac8fcdeba8f05c69_1605815493828239118684.jpg"></video>
+            <h3 class="title">Tập 5 -  Câu chuyện về   Khúc ca Moriko, phần 1</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/bvZ5lcDz-1920.mp4" poster="https://s199.imacdn.com/vg/2019/02/12/8bac040a9e2fad05_114b9d89b1a720a9_2230015499096425118684.jpg"></video>
+            <h3 class="title">Tập 6 - Câu chuyện về khúc ca Moriko, phần 2</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/dlTcmaM3-1920.mp4" poster="https://s199.imacdn.com/vg/2019/02/19/1f82aab18aa04572_d269156600bbd7c5_1670315505549786118684.jpg"></video>
+            <h3 class="title">Tập 7 - Câu chuyện về nhện tơ Jorogumo</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/QTdshlo6-1920.mp4" poster="https://s199.imacdn.com/vg/2019/02/26/d9a4b80374f2cd61_8a6afaa82e00115d_3156915511179104118684.jpg"></video>
+            <h3 class="title">Tập 8 - Câu chuyện của Saru</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/Wi3TDrJu-1920.mp4" poster="https://s199.imacdn.com/vg/2019/03/05/9e87e79c0da0444d_93e38c79c88d79bc_1439381551794945645957.jpg"></video>
+            <h3 class="title">Tập 9 - Câu chuyện về sự tàn nhẫn</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/nywWOOsC-1920.mp4" poster="https://s199.imacdn.com/vg/2019/03/12/1d7fd1a060339429_ec908a4edb6e0182_2873315523320372118684.jpg"></video>
+            <h3 class="title">Tập 10 - Câu chuyện của Tahomaru</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/dEWsdevE-1920.mp4" poster="https://s199.imacdn.com/vg/2019/03/19/62314c5f6eb24cfc_89433a9e6c33df28_1647615529368309118684.jpg"></video>
+            <h3 class="title">Tập 11 - Câu chuyện của Banmon, phần 1</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/t3YtVZZq-1920.mp4" poster="https://s199.imacdn.com/vg/2019/03/26/a6a75a156726869b_5fa552a08d3477c2_19572155359345739674.jpg"></video>
+            <h3 class="title">Tập 12 - Câu chuyện của Banmon, phần 2</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/aS4QQKZl-1920.mp4" poster="https://s199.imacdn.com/vg/2019/04/09/b5cee406e10aec41_5a574e7d3ac34377_16885155479660049674.jpg"></video>
+            <h3 class="title">Tập 13 - Câu truyện về Phật không mặt</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/0bHi5rte-1920.mp4" poster="https://s199.imacdn.com/vg/2019/04/16/6d8a5c52262f1b54_712a966d18bcb674_2982915553579696118684.jpg"></video>
+            <h3 class="title">Tập 14 - Câu chuyện của Sabame</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/IXMLw14P-1920.mp4" poster="https://s199.imacdn.com/vg/2019/04/23/bc0720e360417615_7b9cf44741546e59_24632155595959499674.jpg"></video>
+            <h3 class="title">Tập 15 - Câu chuyện khung cảnh từ địa ngục</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/srXNNYpc-1920.mp4" poster="https://s199.imacdn.com/vg/2019/04/30/3b55aa3deeb62901_ebe873cd7b4079e4_32095155660167129674.jpg"></video>
+            <h3 class="title">Tập 16 - Câu chuyện của Shiranui</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/CwFgdPZi-1920.mp4" poster="https://s199.imacdn.com/vg/2019/05/06/a7fd4ab56a7b878b_b6b0234165d74873_2424115571601579118684.jpg"></video>
+            <h3 class="title">Tập 17 - Câu chuyện về câu hỏi và câu trả lời.</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/Cu0A4MM4-1920.mp4" poster="https://s199.imacdn.com/vg/2019/05/14/917ad25a8f4fb02e_bc48eaacd614717c_27492155781441369674.jpg"></video>
+            <h3 class="title">Tập 18 - Câu chuyện về Mũi đất không khoan nhượng.</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/6gP3x9xu-1920.mp4" poster="https://s199.imacdn.com/vg/2019/05/22/782ffdaa9e3af6f1_080670efacb07b0b_29225155845814659674.jpg"></video>
+            <h3 class="title">Tập 19 - Câu chuyện của Amanoyaku</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/5j3IDFe4-1920.mp4" poster="https://s199.imacdn.com/vg/2019/05/28/3ce1e39c86c654cc_b778271abfed6661_24980155903759289674.jpg"></video>
+            <h3 class="title">Tập 20 - Câu chuyện về Nue</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/pab5RCe9-1920.mp4" poster="https://s199.imacdn.com/vg/2019/06/04/8ccb8d53d3c00826_7b709944b42b16fd_24218155961010219674.jpg"></video>
+            <h3 class="title">Tập 21 - Câu chuyện phá vỡ vòng lặp bi kịch</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/MI0F0FvP-1920.mp4" poster="https://s199.imacdn.com/vg/2019/06/12/8056b5823e4e854e_58d8d3a8e6f4ec6f_38700156030322619674.jpg"></video>
+            <h3 class="title">Tập 22 - Câu chuyện của Nui</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/SdI8X9w7-1920.mp4" poster="https://s199.imacdn.com/vg/2019/06/18/71ffbc8bb23f1eef_fcf5fe1ee97a21a6_33391156085681189674.jpg"></video>
+            <h3 class="title">Tập 23 - Câu chuyện về ác quỷ</h3>
+            </div>
+            <div class="vid active">
+                <video src="https://content.jwplatform.com/videos/7OfBPG0c-1920.mp4" poster="https://s199.imacdn.com/vg/2019/06/25/6bc82bacc6eee1f2_40526a6a0cdeb459_18193156142642919674.jpg"></video>
+            <h3 class="title">Tập 24 - Dororo và Hyakkimaru</h3>
+            </div>
+          
+</div>
+
+
+<script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+      <script>
+var vid = document.getElementById("myVideo");
+var playPauseBtn = document.getElementById("playPauseBtn");
+var timeline = document.getElementById("timeline");
+
+vid.ontimeupdate = function() {updateTimeline()};
+
+function playPauseVid() { 
+    if (vid.paused) {
+        vid.play();
+        playPauseBtn.innerHTML = "Pause";
+    } else {
+        vid.pause();
+        playPauseBtn.innerHTML = "Play";
+    }
+} 
+
+function increaseVol() {
+    if(vid.volume < 1) vid.volume += 0.1;
+}
+
+function decreaseVol() {
+    if(vid.volume > 0) vid.volume -= 0.1;
+}
+
+function toggleFullscreen() {
+    if (vid.requestFullscreen) {
+        vid.requestFullscreen();
+    } else if (vid.mozRequestFullScreen) { /* Firefox */
+        vid.mozRequestFullScreen();
+    } else if (vid.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        vid.webkitRequestFullscreen();
+    } else if (vid.msRequestFullscreen) { /* IE/Edge */
+        vid.msRequestFullscreen();
+    }
+}
+
+function updateTimeline() {
+    var value = (100 / vid.duration) * vid.currentTime;
+    timeline.value = value;
+}
+
+timeline.oninput = function() {
+    var currentTime = this.value * vid.duration / 100;
+    vid.currentTime = currentTime;
+}
+
+const player = new Plyr('#myVideo', {
+    quality: { default: '1080', options: ['1080', '720'] }
+});
+
+
+// _____________________________________________Ham-danh-cho-cac-phim-co-poster-dep___________________________________________________________________________________________________________________________
+let listVideo = document.querySelectorAll('.video-list .vid');
+let mainVideo = document.querySelector('.main-video video');
+let title   = document.querySelector('.main-video .title');
+    
+listVideo.forEach(video =>{
+    video.onclick = () => {
+        listVideo.forEach(vid => vid.classList.remove('active'));
+        video.classList.add('active');
+        if(video.classList.contains('active')){
+            let src = video.children[0].getAttribute('src');
+            let poster = video.children[0].getAttribute('poster'); // Lấy đường dẫn poster
+            mainVideo.src = src;
+            mainVideo.poster = poster; // Đặt thuộc tính poster của video chính
+            let text = video.children[1].innerHTML;
+            title.innerHTML = text;
+        };
+    };
+});
+
+// -----------------------------------------------------su-kien-ghi-nho-video----------------------------------------------------------------------------------------------------
+
+
+
+// Khi một video được chọn
+document.querySelectorAll('.vid').forEach(function(vid) {
+    vid.addEventListener('click', function() {
+        // Lưu trữ URL video và tiêu đề vào localStorage
+        var videoUrl = this.querySelector('video').getAttribute('src');
+        var title = this.querySelector('.title').textContent;
+        localStorage.setItem('lastSelectedVideo', JSON.stringify({url: videoUrl, title: title}));
+    });
+});
+
+// Khi tải lại trang web
+window.addEventListener('DOMContentLoaded', function() {
+    var lastSelectedVideo = JSON.parse(localStorage.getItem('lastSelectedVideo'));
+    if (lastSelectedVideo) {
+        // Tìm video tương ứng và đặt nó thành video được chọn
+        document.querySelectorAll('.vid').forEach(function(vid) {
+            var videoUrl = vid.querySelector('video').getAttribute('src');
+            if (videoUrl === lastSelectedVideo.url) {
+                vid.classList.add('active');
+                // Cập nhật tiêu đề
+                document.querySelector('.title').textContent = lastSelectedVideo.title;
+                // Kích hoạt sự kiện click chuột
+                vid.click();
+            } else {
+                vid.classList.remove('active');
+            }
+        });
+    }
+});
+
+
+
+//--------------------------------------------------phan ghi nho thoi gian video-----------------------------------------------------------------------
+
+// Lấy tham chiếu đến video
+var video = document.getElementById('myVideo');
+
+// Khi video được tải, kiểm tra xem có thời điểm xem cuối cùng không
+video.addEventListener('loadedmetadata', function() {
+    var lastWatchedTime = localStorage.getItem('lastWatchedTime');
+    if (lastWatchedTime) {
+        video.currentTime = lastWatchedTime;
+    }
+});
+
+// Khi video bị tạm dừng (ví dụ: khi người xem đóng trang web)
+video.addEventListener('pause', function() {
+    localStorage.setItem('lastWatchedTime', video.currentTime);
+});
+//---------------------------------------------------------end----------------------- ---------------------------------------------------------
+
+
+    </script>
+</body>
+</html>
